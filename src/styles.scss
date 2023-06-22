@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+p {
+  text-align: center;
+  padding: 4rem;
+  color: #ccc;
+}
+
+
+
+.container {
+  max-width: 960px;
+  width: 100%;
+  width: calc(100% - 1rem);
+  margin: 50px auto;
+  padding: 50px;
+}
+
