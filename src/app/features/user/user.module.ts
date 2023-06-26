@@ -11,7 +11,7 @@ import {UserListComponent} from "../../shared/components/user-list/user-list.com
 import {SharedModule} from "../../shared/shared.module";
 import {USER_SERVICE} from "../../core/services/user.service.interface";
 import { UserNgrxService } from 'src/app/core/services/user-ngrx-impl/user.service';
-import { UserSubjectService } from '../../core/services/user-subject-impl/user-subject.service';
+
 
 /**
  *
@@ -32,7 +32,7 @@ import { UserSubjectService } from '../../core/services/user-subject-impl/user-s
   providers: [
     ApiUsersAdapter,
     UserMapper,
-    { provide: USER_SERVICE, useClass: UserSubjectService }
+    { provide: USER_SERVICE, useClass: UserNgrxService }
   ],
   exports: [
     UserListComponent

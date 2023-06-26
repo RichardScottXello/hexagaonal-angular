@@ -6,6 +6,6 @@ import { UserTableDataSource } from './user-ngrx-impl/user.service';
 export const USER_SERVICE = new InjectionToken<UserServiceInterface>('UserServiceInterface');
 
 export interface UserServiceInterface {
-  getUsers(): Observable<User[]>;
+  fetchUsers(): Observable<User[]>;
   getViewModel():Observable<UserTableDataSource>
 }

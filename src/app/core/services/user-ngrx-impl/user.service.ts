@@ -17,21 +17,19 @@ import { MatTableDataSource } from '@angular/material/table';
 export interface UserTableDataSource {
   dataSource: MatTableDataSource<User>;
   loading?: boolean;
-  error?: any;
+  error?: string | null
 }
 
 @Injectable()
 export class UserNgrxService implements UserServiceInterface {
   private users$!: Observable<User[]>;
   private loading$!: Observable<boolean>;
-  private error$!: Observable<any>;
+  private error$!: Observable<string | null>
   private vm$!: Observable<UserTableDataSource>;
 
-  constructor(private apiUsersAdapter: ApiUsersAdapter, private store: Store) {
+  constructor(private apiUsersAdapter: ApiUsersAdapter, private store: Store) {}
 
-  }
-
-  getUsers(): Observable<User[]> {
+  fetchUsers(): Observable<User[]> {
     return this.apiUsersAdapter.getUsers();
   }
 
@@ -45,8 +43,8 @@ export class UserNgrxService implements UserServiceInterface {
         const dataSource = new MatTableDataSource<User>(users);
         const userTableDataSource: UserTableDataSource = {
           dataSource,
-          loading,
-          error,
+           loading,
+           error,
         };
         return userTableDataSource;
       })
