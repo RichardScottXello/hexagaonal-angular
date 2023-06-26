@@ -17,12 +17,15 @@ const USER_SERVICE = new InjectionToken<UserServiceInterface>(
 describe('UserSubjectService', () => {
   let service: UserSubjectService;
   let userServiceMock: jest.Mocked<UserServiceInterface>;
-  let apiUsersAdapter: ApiUsersAdapter;
+  let apiUsersAdapter: any;
 
   beforeEach(() => {
     userServiceMock = {
-      getUsers: jest.fn(),
+      fetchUsers: jest.fn(),
       getViewModel: jest.fn(),
+    };
+    apiUsersAdapter = {
+      fetchUsers: jest.fn().mockReturnValue(of([])),
     };
 
     TestBed.configureTestingModule({
@@ -33,7 +36,7 @@ describe('UserSubjectService', () => {
       ],
     });
 
-    service = TestBed.inject(UserSubjectService);
+    service = TestBed.inject(UserSubjectService, apiUsersAdapter);
   });
 
   it('should create the view model with the correct data source', () => {
@@ -42,7 +45,7 @@ describe('UserSubjectService', () => {
       { id: 2, name: 'Jane Smith' },
     ];
 
-    userServiceMock.getUsers.mockReturnValue(of(mockUsers));
+    userServiceMock.fetchUsers.mockReturnValue(of(mockUsers));
 
     service.getViewModel().subscribe((viewModel) => {
       const dataSource = new MatTableDataSource<User>(mockUsers);
@@ -51,7 +54,7 @@ describe('UserSubjectService', () => {
       };
 
       expect(viewModel).toEqual(expectedViewModel); // Assert the view model
-      expect(userServiceMock.getUsers).toHaveBeenCalled();
+      expect(userServiceMock.fetchUsers).toHaveBeenCalled();
       expect(userServiceMock.getViewModel).toHaveBeenCalled();
     });
   });

@@ -30,7 +30,7 @@ export class UserNgrxService implements UserServiceInterface {
   constructor(private apiUsersAdapter: ApiUsersAdapter, private store: Store) {}
 
   fetchUsers(): Observable<User[]> {
-    return this.apiUsersAdapter.getUsers();
+    return this.apiUsersAdapter.fetchUsers();
   }
 
   getViewModel(): Observable<UserTableDataSource> {

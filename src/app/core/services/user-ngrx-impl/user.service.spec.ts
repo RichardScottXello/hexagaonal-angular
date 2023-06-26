@@ -13,13 +13,13 @@ describe('User Service', () => {
       select: jest.fn(),
     } as any;
     apiUsersAdapterMock = {
-      getUsers: jest.fn().mockReturnValue(of([])),
+      fetchUsers: jest.fn().mockReturnValue(of([])),
     };
     service = new UserNgrxService(apiUsersAdapterMock, storeMock);
   });
 
   it('should call getUsers method of apiUsersAdapter', () => {
-    service.getUsers().subscribe(() => {
+    service.fetchUsers().subscribe(() => {
       expect(apiUsersAdapterMock
         .getUsers).toHaveBeenCalled();
     });

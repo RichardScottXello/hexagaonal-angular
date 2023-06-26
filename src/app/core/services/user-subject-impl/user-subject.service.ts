@@ -21,7 +21,7 @@ export class UserSubjectService implements UserServiceInterface {
   fetchUsers(): Observable<User[]> {
     const loadingSubject = new BehaviorSubject<boolean>(true);
     const errorSubject = new BehaviorSubject<string | null>(null);
-    const users$ = this.apiUsersAdapter.getUsers().pipe(
+    const users$ = this.apiUsersAdapter.fetchUsers().pipe(
       tap(() => {
         loadingSubject.next(false); // Set loading to false when data is received
       }),

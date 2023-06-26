@@ -39,8 +39,8 @@ describe('UserListComponent', () => {
   it('should return a mock observable of users', () => {
 
 
-    jest.spyOn( mockUserService, 'getUsers').mockReturnValue(of(mockUsers))
-    mockUserService.getUsers().subscribe(users => {
+    jest.spyOn( mockUserService, 'fetchUsers').mockReturnValue(of(mockUsers))
+    mockUserService.fetchUsers().subscribe(users => {
       expect(users).toEqual(mockUsers);
     });
   });

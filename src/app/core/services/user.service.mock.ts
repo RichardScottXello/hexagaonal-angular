@@ -25,7 +25,7 @@ export class MockUserService implements UserServiceInterface {
        return of(userTableDataSource);
   }
 
-  getUsers(): Observable<User[]> {
+  fetchUsers(): Observable<User[]> {
     // Mock implementation for loadUsers
     const mockUsers = [ { name: 'John Doe', username: 'johndoe', email: 'john@example.com', address: '123 Main St' }] as any[];
     return of(mockUsers)

@@ -62,7 +62,7 @@ describe('ApiUsersAdapter', () => {
     (httpClient.get as jest.Mock).mockReturnValue(of(mockUserData));
     (userMapper.mapFromApi as jest.Mock).mockReturnValue(mockMappedUser);
 
-    apiUsersAdapter.getUsers().subscribe((users: User[]) => {
+    apiUsersAdapter.fetchUsers().subscribe((users: User[]) => {
       expect(httpClient.get).toHaveBeenCalledWith(apiUsersAdapter['apiUrl']);
       expect(userMapper.mapFromApi).toHaveBeenCalledTimes(mockUserData.length);
       expect(users).toEqual([mockMappedUser]); // Check if the mapped user is returned

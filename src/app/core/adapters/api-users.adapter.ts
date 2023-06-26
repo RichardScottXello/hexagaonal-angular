@@ -15,7 +15,7 @@ export class ApiUsersAdapter {
     private userMapper: UserMapper
   ) {}
 
-  getUsers(): Observable<User[]> {
+  fetchUsers(): Observable<User[]> {
     return this.http.get<any[]>(this.apiUrl).pipe(
       map((response: any[]) => response.map(userData => this.userMapper.mapFromApi(userData)))
     );
